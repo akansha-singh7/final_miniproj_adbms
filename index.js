@@ -29,14 +29,15 @@ app.post("/sign_up",(req,res)=>{
    const email = req.body.email;
    const password = req.body.password;
 
-const newUser = new User({
-email = email,
-password = password
-});
-
-newUser.save(err)=>{
-err? console.log(err): res.render("success.html");
-})
+var data = {
+      "email":email,
+      "password":password
+   }
+   db.collection('details').insertOne(data,function(err, collection){
+   if (err) throw err;
+      console.log("Record inserted Successfully");
+   });
+   return res.redirect('success.html');
 
 });
 
