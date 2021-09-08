@@ -41,7 +41,7 @@ app.post('/login', function(req,res){
    }
    db.collection('details').findOne({email: email},function(err, collection){
   if (err){
-console.log(err);
+res.render("error.html");
 }
 else{
 if (foundResults.password == password){
@@ -55,10 +55,7 @@ res.render("error.html");
 });
 
 app.get('/',function(req,res){
-   res.set({
-      'Access-control-Allow-Origin': '*'
-   });
-   return res.redirect('index.html');
+   res.redirect('index.html');
 }).listen(3000)
 
 console.log("server listening at port 3000");
