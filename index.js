@@ -48,6 +48,7 @@ app.post("/login",(req,res)=>{
 User.findOne({email: email}, (err, foundResults) => {
 if (err){
 console.log(err);
+res.render("error.html");
 }
 else{
 if (foundResults.password == password){
